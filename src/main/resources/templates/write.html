@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>write.html</title>
+</head>
+<style>
+  input, button {
+        padding : 8px 13px;
+        margin-top : 5px;
+        border : 1px solid grey;
+        border-radius : 4px;
+        vertical-align : middle;
+       }
+       button {
+        background : black;
+        color : white;
+        border : none;
+       }
+       input {
+        display : block;
+</style>
+<body>
+<form name="dirform">
+  <table>
+    <tr>
+      <td>
+        상품명 :
+      </td>
+      <td>
+        <input type="text" name="title">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        가격 :
+      </td>
+      <td>
+        <input type="text" name="price">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button type="button" onclick="save();">저장</button>
+      </td>
+    </tr>
+  </table>
+</form>
+<script>
+  function save(){
+    if(confirm('저장하시겠습니까?')){
+
+    document.dirform.action = "/shop/write";
+    document.dirform.method = "post";
+    document.dirform.submit();
+    }
+  }
+
+</script>
+</body>
+
+</html>
