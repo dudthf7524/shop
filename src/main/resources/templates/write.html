@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>write.html</title>
+  <link rel="stylesheet" href="/nav.css">
 </head>
 <style>
   input, button {
@@ -21,6 +22,7 @@
         display : block;
 </style>
 <body>
+<div th:replace="~{nav.html :: navbar}"></div>
 <form name="dirform">
   <table>
     <tr>

@@ -7,11 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.time.LocalDate;
 
 @Controller
-public class HomeController {
+public class BasicController {
     @GetMapping("/")
     public String index(Model model){
         LocalDate now = LocalDate.now();
-        System.out.println("now : " + now );
         model.addAttribute("now", now);
         return"index";
     }

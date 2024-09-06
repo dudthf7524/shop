@@ -3,23 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/main.css">
 </head>
 <body>
-    list.html
     <div th:replace="~{nav.html :: navbar}"></div>
-    <table>
-        <tr>
-            <td>번호</td>
-            <td>상품명</td>
-            <td>상품가격</td>
-        </tr>
+    <div class="card" th:each="i: ${list}" >
+        <img src="https://placehold.co/300">
+        <div>
+            <a th:href="@{ '/shop/detail/' + ${i.id} }">
+                <h4 th:text="${i.title}"></h4>
+            </a>
+            <p th:text="${i.price}"></p>
+            <a th:href="@{ '/shop/edit/' + ${i.id} }">✏️</a>
+            <span th:onclick="fetch('/shop/item?id=[[${i.id}]]', { method : 'DELETE' })
+                .then(r => r.text())
+                .then(() => {
+                    location.reload();
+                })
+            ">🗑️</span>
+        </div>
 
-      <tr th:each="item: ${list}">
-            <td th:text="${item.id}"></td>
-            <td th:text="${item.title}">></td>
-            <td th:text="${item.price}">></td>
-       </tr>
+    </div>
+    <button class="btn">버튼</button>
+<script>
+    document.querySelectorAll('.btn')[0].addEventListener('click', function(){
+        fetch('/shop/test1', {
+            method : 'POST',
+            headers : { 'Content-Type' : 'application/json' },
+            body : JSON.stringify({name : 'kim'})
+        })
+    })
 
-    </table>
+</script>
+
 </body>
 </html>
